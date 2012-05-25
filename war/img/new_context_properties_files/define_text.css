@@ -1,0 +1,41 @@
+#selectedArea {
+	
+	max-height: 220px;
+	max-width: 220px;
+}
+
+#removeSelected{
+	border-style:solid;
+	border-width:1px;
+	border-color:#505B2E;
+	max-height: 120px;
+	max-width: 220px;
+	width: 190px;
+	background: #E9FFAA;
+}
+
+
+#selectedAreaList {
+	border-style:solid;
+	border-width:1px;
+	border-color:#505B2E;
+	max-height: 220px;
+	height: 220px;
+	width: 150px;
+	max-width: 220px;
+	background: #E9FFAA;
+	overflow: auto;
+}
+
+#trashImage {
+	width: 120px;
+	height: 120px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#containerSelectedAreaList{
+
+	margin-top: 20px;
+}

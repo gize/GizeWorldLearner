@@ -1,0 +1,12 @@
+#selectedArea {
+	border-style:solid;
+	border-width:1px;
+	border-color:#505B2E;
+	max-height: 220px;
+	max-width: 220px;
+}
+
+#removeSelected{
+	max-height: 120px;
+	max-width: 120px;
+}
