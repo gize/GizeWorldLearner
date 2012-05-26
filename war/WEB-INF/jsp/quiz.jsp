@@ -34,13 +34,11 @@
 			<% index++; %>
 			<input type="hidden" id=<%="selectedIndices"+i%> name="selectedIndices"
 				value="<%= vocabularyList.get(i) %>"> 
-			<input
+			<input id=<%="inputfield"+i%>
 				class="inputtext inputColor" type="text" size="15" />
 
-			<a class="hint normalButton" onclick="askMeaning('<%= "selectedIndices"+i %>')">?</a>
-			
-			onclick="collectInformation('${contextname}')"
-			
+			<a class="hint normalButton" onclick="getNextLetter('<%= i %>')">?</a>
+				
 			<% } else { //endif %>
 			<%= vocabularyList.get(i) %>
 			<% } //endelse %>
