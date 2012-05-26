@@ -37,6 +37,7 @@
 			<textarea class="inputColor" rows="10" cols="50"></textarea>
 		</div>
 
+		<input class="normalButton" type="button" onClick="location.href='/new_context_properties.html'" value="PREV"/>
 		<button id="splitButton" class="normalButton" type="button" onclick="splitText()">TEXT
 			IS READY!</button>
 

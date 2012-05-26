@@ -21,7 +21,8 @@
 			<p />
 			<select id="context" class="normalSize inputColor" name="context"></select>
 			<p />
-			<input class="normalButton" type="submit" value="NEXT">
+			<input class="normalButton" type="button" onClick="location.href='/choose_mode.html'" value="PREV"/>
+			<input class="normalButton" type="submit" value="NEXT"/>
 		</FORM>
 	</div>
 </body>

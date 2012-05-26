@@ -141,6 +141,14 @@ a {
 
 }
 
+span.normalButton {
+	display: inline-block;
+	width: 155px;
+	font-size: 14px;
+	text-align: center;
+}
+
+
 .inputColor{
 	color: #354400;
 	background-color: #F4F9E0;

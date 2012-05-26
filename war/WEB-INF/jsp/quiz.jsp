@@ -54,6 +54,7 @@
 		</div>
 		<div id="meaning" class="squareBorder">
 		</div>
+		<input class="normalButton" type="button" onClick="location.href='choose_context_quiz.html'" value="PREV"/>
 	</div>
 
 </body>

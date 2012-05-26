@@ -16,7 +16,8 @@
 			<form:input class="inputColor" path="contextname" />
 			<span id="contextnameErrors"><form:errors path="contextname" /></span>
 			<p />
-			<input class="normalButton" type="submit" value="NEXT">
+			<input class="normalButton" type="button" onClick="location.href='/choose_mode.html'" value="PREV"/>
+			<input class="normalButton" type="submit" value="NEXT"/>
 		</form:form>
 	</div>
 </body>
