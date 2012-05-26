@@ -9,37 +9,44 @@
 <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.17.custom.js"></script>
 <script type="text/javascript" src="js/jquery.dataSelector.js"></script>
-<script type="text/javascript" src="js/define_text.js">	</script>
+<script type="text/javascript" src="js/define_text.js">
+	
+</script>
 
 </head>
-<body onload="init()">
+<body>
 
 	<jsp:include page="header.jsp" />
 	<div class="pageCenter">
 		CONTEXT: ${contextname}
-		<p>
-			<span id="warnings"> Please enter your text: </span>
-		
-			
-			<div id="selectedArea">
-				<div id="removeSelected" class="squareBorder">
-					<img id="trashImage" src="img/trash.png" alt="Drag into trash to delete"/>
-				</div>
-				<div id="containerSelectedAreaList">
-					<div class="info">Drag Items Here</div>
-					<ul id="selectedAreaList" class="squareBorder">
-					</ul>
-				</div>
+		<p />
+		<span id="warnings"> Please enter your text: </span>
+
+		<div id="selectedArea">
+			<div id="removeSelected" class="squareBorder">
+				<img id="trashImage" src="img/trash.png"
+					alt="Drag into trash to delete" />
 			</div>
-		
+			<div id="containerSelectedAreaList">
+				<div class="info">Drag Items Here</div>
+				<ul id="selectedAreaList" class="squareBorder">
+				</ul>
+			</div>
+		</div>
+
 		<div id="inputarea">
 			<div id="splittedText" class="squareBorder"></div>
 			<textarea class="inputColor" rows="10" cols="50"></textarea>
 		</div>
 
-		<input class="normalButton" type="button" onClick="location.href='/new_context_properties.html'" value="PREV"/>
-		<button id="splitButton" class="normalButton" type="button" onclick="splitText()">TEXT
-			IS READY!</button>
+		<input id="goToPhase1" class="normalButton" type="button"
+			onClick="goToPhase1()" value="PREV" />
+			
+		<input id="prevButton" class="normalButton" type="button"
+			onClick="location.href='/new_context_properties.html'" value="PREV" />
+			
+		<button id="splitButton" class="normalButton" type="button"
+			onclick="splitText()">TEXT IS READY!</button>
 
 		<div id="newContextForm">
 			<FORM ACTION="/save_new_text.html" METHOD="post">
@@ -47,8 +54,8 @@
 					type="hidden" id="vocabularyList" name="vocabularyList"> <input
 					type="hidden" id="selectedIndices" name="selectedIndices">
 
-				<input class="normalButton" type="submit" onclick="collectInformation('${contextname}')"
-					value="SAVE CONTEXT">
+				<input class="normalButton" type="submit"
+					onclick="collectInformation('${contextname}')" value="SAVE CONTEXT">
 			</FORM>
 		</div>
 	</div>

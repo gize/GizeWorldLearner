@@ -2,6 +2,7 @@
 	
 	max-height: 220px;
 	max-width: 220px;
+	display: none;
 }
 
 #removeSelected{
@@ -12,8 +13,8 @@
 	max-width: 220px;
 	width: 190px;
 	background: #E9FFAA;
-}
-
+	display: none;
+}	 
 
 #selectedAreaList {
 	border-style:solid;
@@ -47,3 +48,19 @@
 	width: 155px;
 
 }
+
+
+#newContextForm {
+	
+	display: none;
+}
+#splittedText{
+	
+	display: none;
+}
+
+#goToPhase1{
+	
+	display: none;
+}
+
