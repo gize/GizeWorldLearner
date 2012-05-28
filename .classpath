@@ -17,7 +17,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.springframework.context.support-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.springframework.core-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.springframework.expression-3.1.1.RELEASE.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/org.springframework.web-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.springframework.web-3.1.1.RELEASE.jar" sourcepath="/Users/ezgi/.m2/repository/org/springframework/spring-web/3.1.1.RELEASE/spring-web-3.1.1.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.springframework.web.servlet-3.1.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/serializer.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/xalan.jar"/>

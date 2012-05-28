@@ -36,8 +36,8 @@ function getNextLetter(i){
 	if( lenCorrect>lenGuess){
 		hint = correct.substring(0,lenGuess+1);
 	}	
-	$('#inputfield2')[0].value = hint;
+	$('#inputfield'+i)[0].value = hint;
 	if(lenCorrect == lenGuess+1 ){
-		$('#inputfield2').addClass('correct');
+		$('#inputfield'+i).addClass('correct');
 	}
 }
