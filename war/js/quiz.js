@@ -17,6 +17,7 @@ function getNextLetter(i){
 	lenCorrect = correct.length;
 	guess =  $('#inputfield'+i)[0].value;
 	hint = '';
+	index=-1;
 	if(guess.length>0){
 
 		index = correct.indexOf(guess);

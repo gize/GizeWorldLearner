@@ -10,7 +10,7 @@
 	<div class="pageCenter">
 		<a href="/new_context_properties.html"> DEFINE CONTEXT</a>
 		<p>
-			<a href="/choose_context_quiz.html"> QUIZ </a>
+			<a href="/manage_context.html"> MANAGE CONTEXT </a>
 	</div>
 </body>
 

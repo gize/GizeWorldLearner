@@ -29,6 +29,25 @@ public class ContextService implements IContextService{
 		return getKeyForContext(contextname)!= null;
 	}
 	
+	public void deleteContext(String contextname) {
+		
+		Key key = getKeyForContext(contextname);
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		
+		Transaction txn = datastore.beginTransaction();
+		try {
+
+		    datastore.delete(key);
+
+		    txn.commit();
+		} finally {
+		    if (txn.isActive()) {
+		        txn.rollback();
+		    }
+		}
+	}
+	
 	private Key getKeyForContext(String contextname) {
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();

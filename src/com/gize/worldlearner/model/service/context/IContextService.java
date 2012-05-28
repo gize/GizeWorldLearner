@@ -16,5 +16,6 @@ public interface IContextService {
 	List<Word> getWordsForContext(String context);
 
 	List<Integer> createListSelectedIndices(List<Word> words);
-
+	
+	void deleteContext(String contextname);
 }

@@ -52,4 +52,10 @@ public class ContextServiceMock implements IContextService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void deleteContext(String contextname) {
+		// TODO Auto-generated method stub
+		
+	}
 }

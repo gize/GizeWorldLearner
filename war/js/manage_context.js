@@ -28,6 +28,12 @@ $.fn.loadSelect = function(optionsDataArray) {
 	});
 }
 
+function contextChanged(){
+	contextname = $("#context")[0].value;
+	$("#deleteLink")[0].href = "/delete_context.html?context="+contextname;
+	
+}
+
 $.fn.emptySelect = function() {
 	return this.each(function(){
 	if (this.tagName=='SELECT') this.options.length = 0;
