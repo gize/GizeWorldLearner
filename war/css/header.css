@@ -1,0 +1,29 @@
+
+ul#headerMenu  {
+    margin: 0em;
+    margin-left: 250px;
+ padding: 0;
+  }
+ul#headerMenu li {
+	list-style: none;
+	margin: 0; padding: 0;
+	float: left;
+}
+
+
+ul#headerMenu  a {
+padding-right: 32px;
+padding-left: 32px;
+display: block;
+line-height: 80px;
+text-decoration: none;
+/* font-family: Georgia, "Times New Roman", Times, serif; */
+/* font-size: 21px; */
+/* color: #371C1C; */
+}
+
+ul#headerMenu a:hover {
+
+  font-weight: bold;
+
+}

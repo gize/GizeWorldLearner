@@ -8,4 +8,6 @@ public class Const {
 	public static String ENTITY_PROPERTY_WORD="word";
 	public static String ENTITY_PROPERTY_WORD_HIDDEN="hidden";
 	public static String ENTITY_PROPERTY_WORD_ORDER="order";
+	public static String ENTITY_PROPERTY_WORD_MEANING="meaning";
+	
 }

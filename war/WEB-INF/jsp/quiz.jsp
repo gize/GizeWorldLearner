@@ -27,6 +27,7 @@
 		<div id="quiz" class="squareBorder">
 			<%
 		List<String> vocabularyList = (List<String>)request.getAttribute("vocabularyList");
+		List<String> meaningList = (List<String>)request.getAttribute("meaningList");
 		List<Integer> selectedIndices = (List<Integer>)request.getAttribute("selectedIndices");
 		%>
 			<% for(int i=0, index=0; i<vocabularyList.size(); i++) { %>
@@ -35,11 +36,11 @@
 			<input type="hidden" id=<%="selectedIndices"+i%> name="selectedIndices"
 				value="<%= vocabularyList.get(i) %>"> 
 			<input id=<%="inputfield"+i%>
-				class="inputtext inputColor" type="text" size="15" />
+				class="inputtext inputColor" type="text" size="15"  title="<%= meaningList.get(i) %>"/>
 
 			<a class="hint normalButton" onclick="getNextLetter('<%= i %>')">?</a>
 				
-			<% } else { //endif %>
+			<% } else {  %>
 			<%= vocabularyList.get(i) %>
 			<% } //endelse %>
 

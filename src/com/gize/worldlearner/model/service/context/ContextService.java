@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 
 import com.gize.worldlearner.Const;
 import com.gize.worldlearner.model.context.Word;
@@ -82,11 +83,11 @@ public class ContextService implements IContextService{
 
 	@Override
 	public void saveNewContext(String contextName, List<String> arrVocabularyList,
-			List<Integer> arrSelectedIndices) {
+			List<Integer> arrSelectedIndices, List<String> meaningArray) {
 
 
 		Entity context = createNewContext(contextName);
-		List<Entity> words = createWordEntities( context, arrVocabularyList, arrSelectedIndices);
+		List<Entity> words = createWordEntities( context, arrVocabularyList, arrSelectedIndices, meaningArray);
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
@@ -118,24 +119,36 @@ public class ContextService implements IContextService{
 	}
 
 	private List<Entity> createWordEntities(Entity context, List<String> listVocabularyList,
-				List<Integer> listSelectedIndices){
+				List<Integer> listSelectedIndices, List<String> meaningArray){
 		
 		int wordOrder = 0;
 		List<Entity> words = new ArrayList<Entity>();
 		for (String vocab : listVocabularyList) {
 		
-			words.add( createWord(context, vocab, wordOrder, listSelectedIndices.contains(wordOrder)) );
+			if(listSelectedIndices.contains(wordOrder)){
+
+				words.add( createWord(context, vocab, wordOrder, true, meaningArray.get(listSelectedIndices.indexOf(wordOrder))) );
+			} else {
+
+				words.add( createWord(context, vocab, wordOrder, false) );
+			}
 			wordOrder++;
 		}
 		
 		return words;
 	}
 		
-	private Entity createWord(Entity context, String vocab, int wordOrder, boolean isHidden){
+	private Entity createWord(Entity context, String vocab, int wordOrder, boolean isHidden, String meaning){
 		Entity word = new Entity(Const.ENTITY_WORD, context.getKey());
 		word.setProperty(Const.ENTITY_PROPERTY_WORD, vocab);
 		word.setProperty(Const.ENTITY_PROPERTY_WORD_HIDDEN, isHidden);
 		word.setProperty(Const.ENTITY_PROPERTY_WORD_ORDER, wordOrder);
+		word.setProperty(Const.ENTITY_PROPERTY_WORD_MEANING, meaning);
+		return word;
+	}
+	
+	private Entity createWord(Entity context, String vocab, int wordOrder, boolean isHidden){
+		Entity word = createWord(context, vocab, wordOrder, isHidden, null);
 		return word;
 	}
 
@@ -154,7 +167,8 @@ public class ContextService implements IContextService{
 			String w = (String) result.getProperty(Const.ENTITY_PROPERTY_WORD);
 			int order = ((Long) result.getProperty(Const.ENTITY_PROPERTY_WORD_ORDER)).intValue();
 			boolean isHidden = (Boolean) result.getProperty(Const.ENTITY_PROPERTY_WORD_HIDDEN);
-			Word word = new Word(w, order, isHidden);
+			String meaning = (String) result.getProperty(Const.ENTITY_PROPERTY_WORD_MEANING);
+			Word word = new Word(w, order, isHidden, meaning);
 			listWord.add(word);
 		}
 		
@@ -173,5 +187,38 @@ public class ContextService implements IContextService{
 		}
 		
 		return listSelectedIndices;
+	}
+	
+	@Override
+	public List<String> createListMeanings(List<Word> words) {
+		
+		List<String> listMeaning = new ArrayList<String>();
+		for(Word word : words){
+			listMeaning.add(word.getMeaning()==null?"":word.getMeaning());
+		}
+		
+		return listMeaning;
+	}
+	
+	@Override
+	public void setModelForContext(String context, Model model){
+
+		List<Word> words = getWordsForContext(context);
+		
+		List<Integer> listSelectedIndices = createListSelectedIndices(words);
+		List<String> meaningList = createListMeanings(words);
+		
+		model.addAttribute("context", context);
+		model.addAttribute("vocabularyList", createListWordString(words));
+		model.addAttribute("selectedIndices", listSelectedIndices);
+		model.addAttribute("meaningList", meaningList);
+	}
+	
+	private List<String> createListWordString(List<Word> words){
+		List<String> strWords = new ArrayList<String>();
+		for(Word word : words){
+			strWords.add(word.getWord());
+		}
+		return strWords;
 	}
 }

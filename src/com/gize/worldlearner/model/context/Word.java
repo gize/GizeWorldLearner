@@ -5,11 +5,13 @@ public class Word implements Comparable<Word>{
 	private String word;
 	private Integer order;
 	private boolean isHidden;
-	
-	public Word(String word, Integer order, boolean isHidden) {
+	private String meaning;
+
+	public Word(String word, Integer order, boolean isHidden, String meaning) {
 		this.word = word;
 		this.order = order;
 		this.isHidden = isHidden;
+		this.meaning = meaning;
 	}
 	
 	public String getWord() {
@@ -30,6 +32,14 @@ public class Word implements Comparable<Word>{
 	}
 	public void setHidden(boolean isHidden) {
 		this.isHidden = isHidden;
+	}
+
+	public String getMeaning() {
+		return meaning;
+	}
+
+	public void setMeaning(String meaning) {
+		this.meaning = meaning;
 	}
 
 	@Override

@@ -49,13 +49,14 @@
 			onclick="splitText()">TEXT IS READY!</button>
 
 		<div id="newContextForm">
-			<FORM ACTION="/save_new_text.html" METHOD="post">
-				<input type="hidden" id="contextName" name="contextName"> <input
-					type="hidden" id="vocabularyList" name="vocabularyList"> <input
-					type="hidden" id="selectedIndices" name="selectedIndices">
+			<form action="/save_new_text.html" method="post">
+				<input type="hidden" id="contextName" name="contextName"/> 
+				<input type="hidden" id="vocabularyList" name="vocabularyList"/> 
+				<input type="hidden" id="selectedIndices" name="selectedIndices"/>
+				<input type="hidden" id="meaningArray" name="meaningArray"/>
 
 				<input class="normalButton" type="submit"
-					onclick="collectInformation('${contextname}')" value="SAVE CONTEXT">
+					onclick="collectInformation('${contextname}')" value="SAVE CONTEXT"/>
 			</FORM>
 		</div>
 	</div>

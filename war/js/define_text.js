@@ -49,12 +49,14 @@ function handleCardDrop(event, ui) {
 	test = $('li:data("word=' + word + '")');
 
 	if (test.length == 0) {
-		$('<li>' + word + '</li>').data('word', word).data('number', number)
+		tobeadded = '<li>' + word + ' <input class="inputtext inputColor" type="text" size="15" /> </li>';
+		$(tobeadded).data('word', word).data('number', number)
 				.appendTo('#selectedAreaList').draggable({
 					cursor : 'move',
 					revert : true
 				});
 	}
+	
 
 }
 // PHASE SWITCH
@@ -201,16 +203,30 @@ function collectInformation(contextname) {
 	var itemslen = items.length;
 	var vocab = new Array(itemslen);
 	var selectedIndices = [];
-
+	var meaningArray = [];
+	
 	for ( var i = 0, index = 0; i < itemslen; i++) {
 		vocab[i] = items[i].innerHTML;
 		var b = $(items[i]).hasClass('selected');
 		if (b) {
-			selectedIndices[index++] = i;
+			selectedIndices[index] = i;
+			meaning = findMeaningFor(vocab[i]);
+			meaningArray[index] = meaning;
+			index++;
 		}
 	}
 
 	$('#contextName').val(contextname);
 	$('#vocabularyList').val(vocab);
 	$('#selectedIndices').val(selectedIndices);
+	$('#meaningArray').val(meaningArray);
+}
+
+function findMeaningFor(word){
+
+//	test = $('li:data("word=' + word + '")');
+	var found = $('#selectedAreaList li:data("word=' + word + '")')[0];
+	var meaning = $(found).children("input")[0].value;
+	
+	return meaning;
 }

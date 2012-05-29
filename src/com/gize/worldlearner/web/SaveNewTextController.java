@@ -21,21 +21,26 @@ public class SaveNewTextController{
 	private IContextService contextService;
 	
 	@RequestMapping("/save_new_text.html")
-	public String handleRequest(@RequestParam("contextName") String contextName, @RequestParam("vocabularyList") Object vocabularyList, @RequestParam("selectedIndices") Object selectedIndices, Model model) {
+	public String handleRequest(
+			@RequestParam("contextName") String contextName,
+			@RequestParam("vocabularyList") Object vocabularyList,
+			@RequestParam("selectedIndices") Object selectedIndices, 
+			@RequestParam("meaningArray") Object meaningArray, 
+			Model model) {
 
 		String[] arrVocabularyList = ((String)vocabularyList).split(",");
-
 		List<String> listVocabularyList = Arrays.asList( arrVocabularyList );
+		
+		String[] meanings = ((String)meaningArray).split(",");
+		List<String> listMeanings =  Arrays.asList( meanings );
+		
 		List<Integer> arrSelectedIndices = new ArrayList<Integer>(); 
 		for (String selectedIndex : ((String)selectedIndices).split(",")) {
 			arrSelectedIndices.add(Integer.parseInt(selectedIndex));
 		}
-		
-		contextService.saveNewContext(contextName, listVocabularyList, arrSelectedIndices);
-		
-		model.addAttribute("context", contextName);
-		model.addAttribute("vocabularyList", listVocabularyList);
-		model.addAttribute("selectedIndices", arrSelectedIndices);
+
+		contextService.saveNewContext(contextName, listVocabularyList, arrSelectedIndices, listMeanings);
+		contextService.setModelForContext(contextName, model);
 		
 		return "quiz";  
 	}
